@@ -11,6 +11,15 @@ body{
     margin-top: 100px;
     text-align: center;
     margin-bottom: 80px;
+    display:  flex;
+    justify-content: center;
+}
+@media (max-width: 400px) {
+    .js{
+        font-size: 23px;
+    }
+    
+    
 }
 
 .projects-block{
@@ -19,6 +28,14 @@ body{
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap ;
+   
+}
+@media (max-width:760px) {
+    .projects-block{
+        align-items: center;
+        justify-content: center;
+    }
+    
 }
 .project-block{
     border: 1px solid;

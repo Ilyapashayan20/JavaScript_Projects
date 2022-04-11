@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Box</title>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 40px; margin-top: 40px;">Search Box</h1>
+    <div class="s">
+       
+    <div class="tb">
+        <input class="searchInput" placeholder="Search Car" onkeyup="serach()" >
+        <div><label>Find by </label>
+            <select id="select">
+                <option id="option-1" value="name">Name</option>
+              <option id='option-2' value="data">Date</option>
+              <option id='option-3' value="price">Price</option>
+            </select></div>
+        <table  class="table table-striped">
+            <tr class="bg-info">
+                <th>Name</th>
+                <th>Date</th>
+                <th>Price</th>
+            </tr>
+            <tbody id="table">
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="code"><h1 style="text-align: center;">JS Code</h1>
+        <div class="code-text">
+    <textarea>
+        
+let cars = [
+{name: 'BMW' , data:2022 , price: '200000$'},
+{name: 'Mersedes' , data:2022 , price:'550000$'},
+{name: 'Toyota' , data:2012 , price: '12000$'},
+{name: 'Rolls Royce' , data:2022 , price: '999999$'},
+{name: 'Opel' , data:2000 , price: '1000$'},
+ {name: 'Lada-Niva' , data:1988 , price: '1000$'},
+]
+
+
+
+bulidTable(cars)
+function bulidTable(data){
+let table = document.getElementById('table')
+table.innerHTML = ''
+for (let i = 0; i < data.length; i++) {
+    const car = data[i];
+   let  row = `<td>${car.name}</td><td>${car.data}</td><td>${car.price}</td>`
+   table.innerHTML += row
+}
+}
+
+let findindex= 0;
+
+ const selectTag = document.getElementById('select') 
+  selectTag.addEventListener('change', function() {
+  let index = selectTag.selectedIndex;
+  if(index === 1){
+    findtype = 1
+  } else if(index === 2){
+    findtype =2
+  } else{
+    findtype = 0
+  }
+})
+
+
+
+function serach() {
+let input, filter, table, tr, td, i, txtValue;
+input = document.querySelector(".searchInput");
+filter = input.value.toUpperCase();
+table = document.querySelector(".table");
+tr = table.getElementsByTagName("tr");
+for (i = 0; i < tr.length; i++) {
+  td = tr[i].getElementsByTagName("td")[0];
+  if (td) {
+    txtValue = td.textContent ;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
+    }
+  }       
+}
+}
+
+
+    </textarea>
+    </div>
+    </div>
+</div>
+    <script src="JavaScript/searchBox.js"></script>
+</body>
+</html>
